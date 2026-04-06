@@ -12,3 +12,10 @@ const transportOptions: SMTPTransport.Options = {
 };
 
 const transporter = nodemailer.createTransport(transportOptions);
+
+await transporter.sendMail({
+  from: process.env.EMAIL_FROM,
+  to: process.env.EMAIL_RECEIVER,
+  subject: "Test email",
+  text: "Hello from Bun + Nodemailer",
+});
