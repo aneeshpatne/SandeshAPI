@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
 
-const transportOptions: SMTPTransport.Options = {
+export const transportOptions: SMTPTransport.Options = {
   host: process.env.SMTP_SERVER!,
   port: Number(process.env.SMTP_PORT),
   secure: false,
@@ -11,11 +11,4 @@ const transportOptions: SMTPTransport.Options = {
   },
 };
 
-const transporter = nodemailer.createTransport(transportOptions);
-
-await transporter.sendMail({
-  from: process.env.EMAIL_FROM,
-  to: process.env.EMAIL_RECEIVER,
-  subject: "Test email",
-  text: "Hello from Bun + Nodemailer",
-});
+export const transporter = nodemailer.createTransport(transportOptions);
