@@ -70,9 +70,8 @@ EMAIL_SENDER=your-smtp-username
 EMAIL_PASSWORD=your-smtp-password
 EMAIL_FROM=Your App <no-reply@example.com>
 TELEGRAM_BOT_TOKEN=123456789:your_bot_token
+TELEGRAM_CHAT_IDS=123456789,987654321
 ```
-
-Then set your Telegram recipients in `src/telegram/id.ts`.
 
 ## Run the Service
 
