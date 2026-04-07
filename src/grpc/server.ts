@@ -61,6 +61,6 @@ server.bindAsync(
   grpc.ServerCredentials.createInsecure(),
   (err, port) => {
     if (err) throw err;
-    console.log(`gRPC mail server running on ${port}`);
+    console.log(`gRPC sandesh server running on ${port}`);
   },
 );
