@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.sandesh.server</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/aneesh/.bun/bin/bun</string>
+    <string>/Users/aneesh/coding/SandeshAPI/src/grpc/server.ts</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/aneesh/coding/SandeshAPI</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/aneesh/.bun/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/tmp/sandesh.server.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/sandesh.server.err.log</string>
+</dict>
+</plist>
