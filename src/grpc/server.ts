@@ -6,7 +6,9 @@ import { sendTelegramHtml } from "../telegram/telegram";
 
 const PROTO_PATH = path.join(__dirname, "sandesh.proto");
 
-const packageDefinition = protoLoader.loadSync(PROTO_PATH);
+const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
+  keepCase: true,
+});
 
 const proto = grpc.loadPackageDefinition(packageDefinition) as any;
 
@@ -17,8 +19,9 @@ async function sendEmailHandler(
   callback: grpc.sendUnaryData<any>,
 ) {
   try {
-    const { app_id, to, subject, body } = call.request;
-    await sendHtmlMail({ app_id, to, subject, html: body });
+    const { app_id, appId, to, subject, body } = call.request;
+    const resolvedAppId = app_id ?? appId ?? "";
+    await sendHtmlMail({ app_id: resolvedAppId, to, subject, html: body });
     callback(null, {
       success: true,
     });

@@ -16,7 +16,7 @@ export async function sendHtmlMail({
   return transporter.sendMail({
     from: process.env.EMAIL_FROM,
     to,
-    subject: "[" + app_id + "]" + subject,
+    subject: "[" + app_id + "]" + " - " + subject,
     html,
   });
 }
