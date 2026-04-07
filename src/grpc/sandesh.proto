@@ -4,6 +4,7 @@ package sandesh;
 
 service MailerService {
   rpc SendEmail (SendEmailRequest) returns (SendEmailResponse);
+  rpc SendTelegram (SendTelegramRequest) returns (SendTelegramResponse);
 }
 
 message SendEmailRequest {
@@ -15,4 +16,12 @@ message SendEmailRequest {
 
 message SendEmailResponse {
     bool success = 1;
+}
+
+message SendTelegramRequest {
+  string html = 1;
+}
+
+message SendTelegramResponse {
+  bool success = 1;
 }

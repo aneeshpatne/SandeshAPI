@@ -2,6 +2,7 @@ import * as grpc from "@grpc/grpc-js";
 import * as protoLoader from "@grpc/proto-loader";
 import path from "path";
 import { sendHtmlMail } from "../mail/send-html-mail";
+import { sendTelegramHtml } from "../telegram/telegram";
 
 const PROTO_PATH = path.join(__dirname, "sandesh.proto");
 
@@ -28,10 +29,28 @@ async function sendEmailHandler(
   }
 }
 
+async function sendTelegramHandler(
+  call: grpc.ServerUnaryCall<any, any>,
+  callback: grpc.sendUnaryData<any>,
+) {
+  try {
+    const { html } = call.request;
+    await sendTelegramHtml(html);
+    callback(null, {
+      success: true,
+    });
+  } catch (error: any) {
+    callback(null, {
+      success: false,
+    });
+  }
+}
+
 const server = new grpc.Server();
 
 server.addService(mailerProto.MailerService.service, {
   SendEmail: sendEmailHandler,
+  SendTelegram: sendTelegramHandler,
 });
 
 server.bindAsync(
